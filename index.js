@@ -34,6 +34,7 @@ const arr = [
         id: 10, title: 'Doctor Strange', rating: '7.4', img: 'https://i.ibb.co/HNMqmjG/Doctor-Strange.jpg'
     },
     
+    
 ]
 
 
@@ -59,28 +60,34 @@ function changeRadius(change) {
 
 const aElem = document.querySelectorAll('.pagination a');
 
+
+let firstElem = 0;
+
+
+
+
+
+
+
+
+
+
 const createEl = (arr) => {
     const content = document.querySelector('.content')
     
-    let notesOnPage = 5;
+    
+
+
     
 
     // arr.forEach(item => {
-        for(let a of aElem) {
-            
-            a.addEventListener('click', (e) => {
-                content.innerHTML = ''
 
-                e.preventDefault();
-                let pageNum = +a.innerText;
-        
-                let start = (pageNum - 1) * notesOnPage 
-                let end = start + notesOnPage;
-        
-                let deleteEl = arr.slice(start, end)
+            
+            
+
+               
                 
-                
-                deleteEl.forEach((item) => {
+                arr.forEach((item) => {
                     const itemEl = document.createElement('div')
                     itemEl.innerHTML = `
                     <div data-id="${item.id}" class="card">
@@ -93,8 +100,8 @@ const createEl = (arr) => {
                                 <button class="btn">Watch</button>
                             </div>
                     </div>`
-
                 content.appendChild(itemEl)
+
                 const btn = document.querySelectorAll('.btn')
                 btn.forEach((btnEl) => {
                     btnEl.addEventListener('click', () => {
@@ -108,24 +115,11 @@ const createEl = (arr) => {
             })
    
     
-            })
+           
         } 
     )}
-}
-    //   
-    //     <div data-id="${item.id}" class="card">
-    //     <div class="card-title">${item.title}</div>
-    //     <div class="card-rating card-rating--${changeRadius(item.rating)}">${item.rating}</div>
-    //     <div class="card-image">
-    //         <img class="image" src="${item.img}" alt="">
-    //     </div>
-    //     <div class="card-button">
-    //         <button class="btn">Watch</button>
-    //     </div>
-    // </div>
-    //     `
 
-        
+
 
         
 
@@ -162,7 +156,6 @@ window.addEventListener('click', (event) => {
                     </div>
 
                 `
-        g
     }
 })
     
