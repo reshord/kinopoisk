@@ -37,16 +37,6 @@ const arr = [
     
 ]
 
-
-
-
-
-// localStorage.setItem('arr', JSON.stringify(arr))
-// let d = localStorage.getItem('arr')
-// d = JSON.parse(d)
-// console.log(d);
-
-
 function changeRadius(change) {
    
     if(change > 7) {
@@ -57,37 +47,12 @@ function changeRadius(change) {
         return 'red'
     }
 }
-
-const aElem = document.querySelectorAll('.pagination a');
-
-
-let firstElem = 0;
-
-
-
-
-
-
-
-
-
+const content = document.querySelector('.content')
 
 const createEl = (arr) => {
-    const content = document.querySelector('.content')
     
     
-
-
-    
-
-    // arr.forEach(item => {
-
-            
-            
-
-               
-                
-                arr.forEach((item) => {
+                arr.sort((a,b) => a.rating - b.rating).forEach((item) => {
                     const itemEl = document.createElement('div')
                     itemEl.innerHTML = `
                     <div data-id="${item.id}" class="card">
@@ -100,7 +65,10 @@ const createEl = (arr) => {
                                 <button class="btn">Watch</button>
                             </div>
                     </div>`
+                    
                 content.appendChild(itemEl)
+            
+
 
                 const btn = document.querySelectorAll('.btn')
                 btn.forEach((btnEl) => {
@@ -113,17 +81,70 @@ const createEl = (arr) => {
                     body.classList.remove('removeScroll')
                 })
             })
-   
-    
-           
-        } 
-    )}
+        })
+}
 
 
 
-        
+const checkbox = document.querySelector('#checkbox')
 
-        
+const sortBefore7Raring = () => {
+    checkbox2.checked = false
+    content.innerHTML = ''
+    const res = arr.filter(el => {
+        if(el.rating < 7 && el.rating > 4) {
+            const itemEl = document.createElement('div')
+                    itemEl.innerHTML = `
+                    <div data-id="${el.id}" class="card">
+                        <div class="card-title">${el.title}</div>
+                            <div class="card-rating card-rating--${changeRadius(el.rating)}">${el.rating}</div>
+                            <div class="card-image">
+                                <img class="image" src="${el.img}" alt="">
+                            </div>
+                            <div class="card-button">
+                                <button class="btn">Watch</button>
+                            </div>
+                    </div>`
+
+            content.appendChild(itemEl)
+        }
+
+    })
+
+} 
+
+checkbox.addEventListener('click', sortBefore7Raring)
+
+const checkbox2 = document.querySelector('#checkbox2')
+
+
+const sortAfter7Raring = () => {
+    checkbox.checked = false
+    content.innerHTML = ''
+    const res = arr.filter(el => {
+        if(el.rating > 7) {
+            const itemEl = document.createElement('div')
+                    itemEl.innerHTML = `
+                    <div data-id="${el.id}" class="card">
+                        <div class="card-title">${el.title}</div>
+                            <div class="card-rating card-rating--${changeRadius(el.rating)}">${el.rating}</div>
+                            <div class="card-image">
+                                <img class="image" src="${el.img}" alt="">
+                            </div>
+                            <div class="card-button">
+                                <button class="btn">Watch</button>
+                            </div>
+                    </div>`
+
+            content.appendChild(itemEl)
+        }
+
+    })
+
+}
+
+checkbox2.addEventListener('click', sortAfter7Raring)   
+
 
     
 
@@ -133,14 +154,12 @@ const modal = document.querySelector('.modal'),
           modalContent = document.querySelector('.modal-content__text'),
           btn = document.querySelectorAll('.btn')
           
-          
-            
 
 window.addEventListener('click', (event) => {
     
     const btn = event.target.closest('.card-button')
     
-    if(event.target = btn) {
+    if(btn) {
         const card = btn.closest('.card')
         
               infoCard = {
@@ -160,6 +179,5 @@ window.addEventListener('click', (event) => {
 })
     
 createEl(arr)
-
 
 

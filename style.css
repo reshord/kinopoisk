@@ -369,6 +369,9 @@ a:hover {
     cursor: pointer;
 }
 
-
+label {
+    color: white;
+    cursor: pointer;
+}
 
 
