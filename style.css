@@ -309,6 +309,45 @@ a:hover {
         height: 200px;
         margin: 10px 60px;
     }
+    .header-sort label {
+        font-size: 12px;
+    }
+    .header-sort input {
+        margin-top: 15px;
+        width: 11px;
+        height: 11px;
+    }
+}
+
+@media(max-width: 586px) {
+    .header-sort {
+        position: absolute;
+        top: 100px;
+        right: 20px;
+    }
+}
+@media(max-width: 560px) {
+    .header-sort {
+        position: absolute;
+        top: 60px;
+        right: 140px;
+        display: flex;
+    }
+    .header-sort_block1 {
+        margin-right: 10px;
+    }
+}
+@media(max-width: 360px) {
+    .header-sort {
+        position: absolute;
+        top: 60px;
+        right: 40px;
+        display: flex;
+    }
+    .header-sort_block1 {
+        margin-right: 10px;
+    }
+
 }
 
 .modal {

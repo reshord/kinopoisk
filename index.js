@@ -110,7 +110,17 @@ const sortBefore7Raring = () => {
         }
 
     })
-
+    const btn = document.querySelectorAll('.btn')
+    btn.forEach((btnEl) => {
+        btnEl.addEventListener('click', () => {
+            modal.classList.add('active')
+            body.classList.add('removeScroll')
+        })
+    closeModal.addEventListener('click', () => {
+        modal.classList.remove('active')
+        body.classList.remove('removeScroll')
+    })
+})
 } 
 
 checkbox.addEventListener('click', sortBefore7Raring)
@@ -140,7 +150,18 @@ const sortAfter7Raring = () => {
         }
 
     })
-
+    
+    const btn = document.querySelectorAll('.btn')
+    btn.forEach((btnEl) => {
+        btnEl.addEventListener('click', () => {
+            modal.classList.add('active')
+            body.classList.add('removeScroll')
+        })
+    closeModal.addEventListener('click', () => {
+        modal.classList.remove('active')
+        body.classList.remove('removeScroll')
+    })
+})
 }
 
 checkbox2.addEventListener('click', sortAfter7Raring)   
